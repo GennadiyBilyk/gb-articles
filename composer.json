@@ -12,7 +12,7 @@
             "email": "gennadiy_bilyk@mail.ru"
         }
     ],
-    "minimum-stability": "1.0.0",
+    "minimum-stability": "beta",
     "autoload":{
         "psr-4":{
             "GennadiyBilyk\\Articles\\":""
