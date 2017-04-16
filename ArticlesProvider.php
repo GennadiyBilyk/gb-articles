@@ -13,7 +13,22 @@ class ArticlesProvider extends ServiceProvider
      */
     public function boot()
     {
+
+//        $this->publishes([
+//            __DIR__.'/srs/Models/Article.php', config_path('Models/Article.php')
+//        ], 'sections');
+
+
+        $this->publishes([
+            __DIR__.'/src/Models/Article' => app_path('/Models/Article')
+        ], 'models');
+
         //
+        $this->publishes([
+            __DIR__.'/src/database/migrations/' => base_path('/database/migrations'),
+
+
+        ], 'migrations');
     }
 
     /**
