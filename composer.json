@@ -1,0 +1,21 @@
+{
+    "name": "gennadiy-bilyk/articles",
+    "description": "article package for blog",
+    "require": {
+        "laravelrus/sleepingowl": "^4.95"
+    },
+    "license": "MIT",
+    "version":"1.0.0",
+    "authors": [
+        {
+            "name": "Gennadiy Bilyk",
+            "email": "gennadiy_bilyk@mail.ru"
+        }
+    ],
+    "minimum-stability": "dev",
+    "autoload":{
+        "psr-4":{
+            "GennadiyBilyk\\Articles\\":""
+        }
+    }
+}
