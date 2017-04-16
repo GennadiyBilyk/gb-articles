@@ -14,9 +14,9 @@ class ArticlesProvider extends ServiceProvider
     public function boot()
     {
 
-//        $this->publishes([
-//            __DIR__.'/srs/Models/Article.php', config_path('Models/Article.php')
-//        ], 'sections');
+        $this->publishes([
+            __DIR__.'/src/Http/Sections' => app_path('/Http/Sections')
+        ], 'sections');
 
 
         $this->publishes([

@@ -15,7 +15,7 @@ use AdminFormElement;
 /**
  * Class Sentences
  *
- * @property \App\Models\Article $model
+ * @property \App\Models\Article\Article $model
  *
  * @see http://sleepingowladmin.ru/docs/model_configuration_section
  */
