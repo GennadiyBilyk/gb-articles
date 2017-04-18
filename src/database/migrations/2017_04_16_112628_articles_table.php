@@ -24,6 +24,7 @@ class ArticlesTable extends Migration
             $table->string('h1');
             $table->string('title');
             $table->string('anons');
+            $table->string('url');
             $table->text('body');
 
             $table->timestamps();

@@ -1,9 +1,13 @@
 <?php
+/**
+ * Created by PhpStorm.
+ * User: gennadiy
+ * Date: 18.04.2017
+ * Time: 23:25
+ */
 
 namespace App\Http\Sections;
 
-use App\Models\Article\Articlescategory;
-use App\Models\Article\ArticlesHasCategory;
 use KodiComponents\Support\Contracts\Initializable;
 use SleepingOwl\Admin\Contracts\Display\DisplayInterface;
 use SleepingOwl\Admin\Contracts\Form\FormInterface;
@@ -21,7 +25,7 @@ use AdminFormElement;
  *
  * @see http://sleepingowladmin.ru/docs/model_configuration_section
  */
-class Articles extends Section implements Initializable
+class ArticleAuthors extends Section implements Initializable
 {
     /**
      * @var \App\Role
@@ -49,7 +53,7 @@ class Articles extends Section implements Initializable
      */
     public function getTitle()
     {
-        return trans('Статьи');
+        return trans('Авторы');
     }
 
     /**
@@ -62,9 +66,7 @@ class Articles extends Section implements Initializable
             ->setHtmlAttribute('class', 'table-primary')
             ->setColumns(
                 AdminColumn::text('id', '#'),
-                AdminColumn::link('title', 'Title'),
-                AdminColumn::text('h1', 'H1'),
-                AdminColumn::lists('articlescategories.title', 'Категории')->setWidth('200px')
+                AdminColumn::text('name', 'Имя')
 
             )->paginate(20);
     }
@@ -81,28 +83,12 @@ class Articles extends Section implements Initializable
         $form = AdminForm::panel()->addBody(
 
             AdminFormElement::columns()
-                ->addColumn([AdminFormElement::text('title', 'Title')->required()])
-          ->addColumn([AdminFormElement::text('h1', 'H1')->required(),])
-          ->addColumn([AdminFormElement::text('url', 'Ссылка')->addValidationRule('regex:/^[a-zA-Z0-9-]+$/')->required()->unique()]),
+                ->addColumn([AdminFormElement::text('name', 'Имя')->required()])
+                ->addColumn([AdminFormElement::text('signature', 'Подпись')->required()])
 
-            AdminFormElement::wysiwyg('body', 'Текс')->disableFilter()->required(),
-
-            AdminFormElement::select('article_author_id')->setLabel('Страна')
-                ->setModelForOptions(\App\Models\Article\ArticleAuthor::class)
-                ->setHtmlAttribute('placeholder', 'Выберите автора')
-                ->setDisplay('name')
-                ->required(),
-
-
-
-            AdminFormElement::multiselect('articlescategories', 'Категории', Articlescategory::class)->setDisplay('title'),
-
-              AdminFormElement::columns()
-                  ->addColumn([AdminFormElement::textarea('meta_description', 'Мета description')->required()], 3)
-                  ->addColumn([AdminFormElement::textarea('meta_keywords', 'Мета keywords')->required()], 3)
-                  ->addColumn([AdminFormElement::textarea('meta_title', 'Мета title')->required()])
-                  ->addColumn([AdminFormElement::textarea('anons', 'Анонс')->required()->addValidationRule('max:500'),])
         );
+
+
         return $form;
 
 
@@ -124,7 +110,7 @@ class Articles extends Section implements Initializable
      */
     public function getCreateTitle()
     {
-        return 'Добавить статью';
+        return 'Добавить Автора';
     }
 
     /**
