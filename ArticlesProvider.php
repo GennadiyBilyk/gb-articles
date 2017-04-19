@@ -21,7 +21,6 @@ class ArticlesProvider extends ServiceProvider
 
         $this->publishes([
             __DIR__.'/src/Models/Article' => app_path('/Models/Article'),
-            __DIR__.'/src/Models/Permission' => app_path('/Models/Permission')
         ], 'models');
 
         //
