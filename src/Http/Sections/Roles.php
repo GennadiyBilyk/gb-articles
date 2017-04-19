@@ -19,22 +19,29 @@ use SleepingOwl\Admin\Section;
  */
 class Roles extends Section
 {
-    /**
-     * @see http://sleepingowladmin.ru/docs/model_configuration#ограничение-прав-доступа
-     *
-     * @var bool
-     */
-    protected $checkAccess = true;
-
-    /**
-     * @var string
-     */
-    protected $title = 'Roles';
 
     /**
      * @var string
      */
     protected $alias;
+
+
+
+    /**
+     * @return string
+     */
+    public function getIcon()
+    {
+        return 'fa fa-warning';
+    }
+
+    /**
+     * @return string|\Symfony\Component\Translation\TranslatorInterface
+     */
+    public function getTitle()
+    {
+        return trans('Роли');
+    }
 
     /**
      * @return DisplayInterface

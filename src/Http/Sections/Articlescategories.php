@@ -31,7 +31,7 @@ use AdminFormElement;
 class Articlescategories extends Section implements Initializable
 {
     /**
-     * @var \App\Role
+     * @var \App\Models\Article\Articlescategory
      */
     protected $model;
 
@@ -48,7 +48,7 @@ class Articlescategories extends Section implements Initializable
      */
     public function getIcon()
     {
-        return 'fa fa-group';
+        return 'fa fa-folder-open';
     }
 
     /**

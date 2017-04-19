@@ -6,7 +6,7 @@ use AdminColumn;
 use AdminDisplay;
 use AdminForm;
 use AdminFormElement;
-use App\Role;
+use App\Models\Permission\Role;
 use SleepingOwl\Admin\Contracts\Display\DisplayInterface;
 use SleepingOwl\Admin\Contracts\Form\FormInterface;
 use SleepingOwl\Admin\Section;
@@ -20,17 +20,36 @@ use SleepingOwl\Admin\Section;
  */
 class Users extends Section
 {
-    /**
-     * @see http://sleepingowladmin.ru/docs/model_configuration#ограничение-прав-доступа
-     *
-     * @var bool
-     */
-    protected $checkAccess = true;
 
     /**
-     * @var string
+     * @var \App\User
      */
-    protected $title = 'Users';
+    protected $model;
+
+    /**
+     * Initialize class.
+     */
+    public function initialize()
+    {
+
+    }
+
+    /**
+     * @return string
+     */
+    public function getIcon()
+    {
+        return 'fa fa-group';
+    }
+
+    /**
+     * @return string|\Symfony\Component\Translation\TranslatorInterface
+     */
+    public function getTitle()
+    {
+        return trans('Пользователи');
+    }
+
 
     /**
      * @return DisplayInterface

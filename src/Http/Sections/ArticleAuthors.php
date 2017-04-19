@@ -28,7 +28,7 @@ use AdminFormElement;
 class ArticleAuthors extends Section implements Initializable
 {
     /**
-     * @var \App\Role
+     * @var \App\Models\Article\ArticleAuthor
      */
     protected $model;
 
@@ -45,7 +45,7 @@ class ArticleAuthors extends Section implements Initializable
      */
     public function getIcon()
     {
-        return 'fa fa-group';
+        return 'fa fa-id-card-o';
     }
 
     /**
