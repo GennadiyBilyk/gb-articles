@@ -81,7 +81,12 @@ class Articlescategories extends Section implements Initializable
 
 
             AdminFormElement::text('title', 'Заголовок')->required(),
-            AdminFormElement::text('image', 'Картинка')->required()
+            AdminFormElement::columns()
+            ->addColumn([AdminFormElement::textarea('meta_description', 'Мета description')->required()], 4)
+            ->addColumn([AdminFormElement::textarea('meta_keywords', 'Мета keywords')->required()], 4)
+            ->addColumn([AdminFormElement::textarea('meta_title', 'Мета title')->required()],4),
+            AdminFormElement::text('image', 'Картинка')->required(),
+            AdminFormElement::text('url', 'Ссылка')->addValidationRule('regex:/^[a-zA-Z0-9-]+$/')->required()->unique()
         );
 
 

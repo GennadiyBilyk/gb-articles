@@ -21,7 +21,7 @@ class ArticlescategoriesTable extends Migration
             $table->integer('rgt')->unsigned()->nullable();
             $table->integer('depth')->unsigned()->nullable();
             $table->integer('order')->unsigned()->nullable();
-            $table->string('slug', 80)->nullable();
+            $table->string('url', 80)->nullable();
             $table->boolean('status')->default(2);
             $table->string('title', 80)->nullable();
             $table->string('description', 1024)->nullable();
