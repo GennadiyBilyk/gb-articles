@@ -35,4 +35,7 @@
 	  
 
 	  
+	  Добавляем js файл из репозитория https://github.com/GennadiyBilyk/jsTranslite в public/js/translite.js
+	  
+	  
 	  все готово!
