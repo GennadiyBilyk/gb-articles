@@ -11,6 +11,7 @@
 
 namespace App\Http\Sections;
 
+use KodiCMS\Assets\Facades\Meta;
 use KodiComponents\Support\Contracts\Initializable;
 use SleepingOwl\Admin\Contracts\Display\DisplayInterface;
 use SleepingOwl\Admin\Contracts\Form\FormInterface;
@@ -30,6 +31,10 @@ use AdminFormElement;
  */
 class Articlescategories extends Section implements Initializable
 {
+
+
+    private $urlHelpText = 'Будьте внимательны при редактировании ссылки, она может быть проиндексирована';
+
     /**
      * @var \App\Models\Article\Articlescategory
      */
@@ -76,17 +81,21 @@ class Articlescategories extends Section implements Initializable
     {
 
 
+
+
+
+
         $form = AdminForm::panel()->addBody(
 
 
 
             AdminFormElement::columns()
                 ->addColumn([AdminFormElement::text('title', 'Заголовок')->required()],6)
-                ->addColumn([AdminFormElement::text('url', 'Ссылка')->addValidationRule('regex:/^[a-zA-Z0-9-]+$/')->required()->unique()],6),
+                ->addColumn([AdminFormElement::text('url', 'Ссылка')->addValidationRule('regex:/^[a-zA-Z0-9-]+$/')->setHelpText($this->urlHelpText)->required()->unique()],6),
             AdminFormElement::columns()
-            ->addColumn([AdminFormElement::textarea('meta_description', 'Мета description')->required()], 4)
-            ->addColumn([AdminFormElement::textarea('meta_keywords', 'Мета keywords')->required()], 4)
-            ->addColumn([AdminFormElement::textarea('meta_title', 'Мета title')->required()],4),
+                ->addColumn([AdminFormElement::textarea('meta_description', 'Мета description')->required()], 4)
+                ->addColumn([AdminFormElement::textarea('meta_keywords', 'Мета keywords')->required()], 4)
+                ->addColumn([AdminFormElement::textarea('meta_title', 'Мета title')->required()],4),
             AdminFormElement::text('image', 'Картинка')->required()
 
         );
@@ -104,6 +113,9 @@ class Articlescategories extends Section implements Initializable
      */
     public function onCreate()
     {
+        $this->urlHelpText = '';
+        //При создании подключаем транслит для заполнения url
+        Meta::addJs('admin-translite', asset('js/translite.js'),true);
         // Создание и редактирование записи идентичны, поэтому перенаправляем на метод редактирования
         return $this->onEdit(null);
     }
