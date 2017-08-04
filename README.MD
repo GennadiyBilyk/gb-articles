@@ -2,6 +2,7 @@
 
 
 *Пакет требует установленных пакетов*
+
      "laravelrus/sleepingowl": "4.*@dev",
      
      "baum/baum": "~1.1"
